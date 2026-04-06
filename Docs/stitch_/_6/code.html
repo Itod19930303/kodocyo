@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#eea439",
+                        "secondary": "#1a6b59",
+                        "background": "#f8f9ff",
+                        "outline-variant": "#99b4dc",
+                        "outline": "#627ca1",
+                        "on-error": "#fff7f6",
+                        "tertiary-dim": "#754a00",
+                        "secondary-fixed": "#b1fde6",
+                        "on-tertiary-fixed": "#3a2300",
+                        "primary-dim": "#005498",
+                        "surface-container-low": "#eff3ff",
+                        "secondary-dim": "#025e4e",
+                        "on-tertiary-container": "#563500",
+                        "tertiary-container": "#feb246",
+                        "inverse-primary": "#68abff",
+                        "tertiary": "#855500",
+                        "secondary-container": "#b1fde6",
+                        "on-error-container": "#65000b",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#623d00",
+                        "inverse-surface": "#020f1f",
+                        "primary-container": "#9ac3ff",
+                        "on-secondary-container": "#0e6453",
+                        "on-background": "#173355",
+                        "on-secondary": "#e4fff5",
+                        "surface-container": "#e6eeff",
+                        "primary": "#0060ad",
+                        "primary-fixed-dim": "#7fb6ff",
+                        "on-tertiary": "#fff7f3",
+                        "on-surface": "#173355",
+                        "inverse-on-surface": "#909eb4",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed": "#005041",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#d4e3ff",
+                        "surface-tint": "#0060ad",
+                        "secondary-fixed-dim": "#a3eed8",
+                        "on-primary-container": "#003d71",
+                        "error-container": "#f56965",
+                        "surface-container-highest": "#d4e3ff",
+                        "on-primary": "#f8f8ff",
+                        "on-secondary-fixed-variant": "#1f6e5d",
+                        "tertiary-fixed": "#feb246",
+                        "primary-fixed": "#9ac3ff",
+                        "on-primary-fixed-variant": "#004681",
+                        "error-dim": "#70030f",
+                        "on-surface-variant": "#466084",
+                        "error": "#ac3434",
+                        "surface-container-high": "#dde9ff",
+                        "on-primary-fixed": "#00284e",
+                        "surface-dim": "#c5dbff"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans", "Noto Sans JP"],
+                        "body": ["Manrope", "Noto Sans JP"],
+                        "label": ["Manrope", "Noto Sans JP"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Noto Sans JP', 'Manrope', sans-serif;
+            background-color: #f8f9ff;
+            color: #173355;
+        }
+        .editorial-shadow {
+            box-shadow: 0 10px 30px -5px rgba(23, 51, 85, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm shadow-[#173355]/5">
+<div class="flex justify-between items-center px-6 h-16 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="text-2xl font-bold text-[#0060ad] dark:text-[#9ac3ff] tracking-tight font-headline">こどちょ</span>
+</div>
+<nav class="hidden md:flex gap-6 font-['Plus_Jakarta_Sans','Noto_Sans_JP'] text-base font-medium">
+<a class="text-[#0060ad] dark:text-[#9ac3ff] font-bold" href="#">ダッシュボード</a>
+<a class="text-[#173355]/60 dark:text-[#f8f9ff]/60 hover:bg-[#eff3ff] transition-colors px-3 py-1 rounded-lg" href="#">家族</a>
+<a class="text-[#173355]/60 dark:text-[#f8f9ff]/60 hover:bg-[#eff3ff] transition-colors px-3 py-1 rounded-lg" href="#">レポート</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full text-on-surface-variant font-semibold text-sm hover:bg-surface-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm">person_add</span>
+<span>子供を追加</span>
+</button>
+<button class="flex items-center gap-2 bg-primary px-5 py-2 rounded-full text-on-primary font-bold text-sm shadow-lg shadow-primary/20 hover:bg-primary-dim transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>新規入力</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden ml-2 ring-2 ring-primary-container">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="portrait of a professional father with a kind expression, soft natural lighting, high-end photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4Ri36pr8iD31FbKjl1XBUJcj4NEo7vbxAhZKgjrsCVbSblAF4j5ogbkd7JgF6XO2G436kOlfump6hj4rZZOECeLEQ_goVJPMyWoIfevi5hgYHawL_K-LqK58KXEBX4eEiWlxr0BJArBe5E7PAtTMpBuqXbthXihL4Qye2jVtDVTXMi_XAIwCPMVDKkgh9wGOgjiF-RS1h6v9HJhofjRSLW9SHBFUW7aFiVmkvZHjwVJnfyyh4Ue9mjahVryFLeji5YWVV5wOnGnU"/>
+</div>
+</div>
+</div>
+<div class="bg-slate-100/50 dark:bg-slate-800/50 h-[1px] w-full absolute bottom-0"></div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section: Net Worth -->
+<section class="mb-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 bg-gradient-to-br from-primary to-primary-dim rounded-[2.5rem] p-8 md:p-12 text-on-primary relative overflow-hidden shadow-2xl shadow-primary/10">
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-end md:items-center">
+<div>
+<p class="font-label text-primary-container/80 text-sm font-semibold tracking-widest uppercase mb-2">家族の純資産</p>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tight mb-4">¥2,485,000</h1>
+<div class="flex items-center gap-3 bg-white/10 w-fit px-4 py-2 rounded-full backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary-fixed">trending_up</span>
+<span class="text-sm font-bold">+12.4% <span class="font-normal opacity-70 ml-1">先月比</span></span>
+</div>
+</div>
+<div class="hidden md:block">
+<div class="h-32 w-48 bg-white/5 rounded-2xl flex items-end p-4 gap-2">
+<div class="w-full bg-primary-container/30 h-[40%] rounded-t-lg"></div>
+<div class="w-full bg-primary-container/40 h-[60%] rounded-t-lg"></div>
+<div class="w-full bg-primary-container/60 h-[50%] rounded-t-lg"></div>
+<div class="w-full bg-primary-container/80 h-[80%] rounded-t-lg"></div>
+<div class="w-full bg-white h-full rounded-t-lg"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Savings Insights -->
+<div class="lg:col-span-4 bg-surface-container-low rounded-[2.5rem] p-8 flex flex-col justify-between">
+<div>
+<h3 class="font-headline text-xl font-bold mb-6">貯蓄の分析</h3>
+<div class="flex items-center justify-center relative py-4">
+<!-- Circular Progress Simulation -->
+<svg class="w-32 h-32 transform -rotate-90">
+<circle class="text-surface-variant" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-dasharray="339.292" stroke-dashoffset="84" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold">75%</span>
+<span class="text-[10px] text-on-surface-variant font-bold uppercase">目標達成度</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center bg-surface-container-lowest p-3 rounded-2xl">
+<span class="text-sm font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span> 今月の目標
+                        </span>
+<span class="font-bold text-sm">¥50,000</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-lowest p-3 rounded-2xl">
+<span class="text-sm font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> 自動積立
+                        </span>
+<span class="font-bold text-sm">有効</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid for Child Cards -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="font-headline text-2xl font-bold">教育資金の目標</h2>
+<p class="text-on-surface-variant text-sm">お子様の将来の成長をサポートしましょう</p>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-1 hover:underline">
+                詳細を見る <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Child 1: Haru -->
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 editorial-shadow group hover:bg-surface-container-low transition-all duration-300">
+<div class="flex justify-between items-start mb-8">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden ring-4 ring-primary/5">
+<img alt="ハル" class="w-full h-full object-cover" data-alt="high quality portrait of a young boy smiling warmly, professional soft lighting, clean background, modern aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY11c_JdrdWQgHdsgihKCUalMUBx-hqY1blc7mFPhPeWrai_yNmSnxgEe3AA8hnUANxU2BeQ9olxKHvnb_MHGzmbMCgsrg5Jx10BsAbqV3J68iwU8s3pSRZBFiw6BKZOsbObrEf3PsV0GelZWBhlN7qLJj18KLoYbK2kl4ABLAeCK4NqS0qMILXghNkMZGD67XvcrDKwX61TwQv8W6uTMDkJVQE0fBQZz_7ak1ilYFbYxpVnCWt_ErJ1VyzBPA-5Ivjl_yMFnqthM"/>
+</div>
+<div>
+<h4 class="font-headline text-xl font-bold">ハル</h4>
+<span class="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest">8歳</span>
+</div>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                        順調
+                    </div>
+</div>
+<div class="mb-6">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-bold text-on-surface-variant">大学資金</span>
+<span class="font-headline text-2xl font-bold text-primary">¥842,000</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 62%;"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] font-bold text-on-surface-variant/40">目標額: ¥1,350,000</span>
+<span class="text-[10px] font-bold text-on-surface-variant/40">62%</span>
+</div>
+</div>
+</div>
+<!-- Child 2: Akari -->
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 editorial-shadow group hover:bg-surface-container-low transition-all duration-300">
+<div class="flex justify-between items-start mb-8">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden ring-4 ring-tertiary/5">
+<img alt="アカリ" class="w-full h-full object-cover" data-alt="high quality portrait of a young girl with pigtails smiling, bright airy studio lighting, professional clean photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7r672YeJ80tzdAZSoWi6_qe5XRCG5CepR5py2xzcPp58IkTU27q88Vmt6EH2Usoyhy0RChkhEqyw4YI-y6llOlFRKQtHqgCEmOVxrqmYV4nirXYVT1kyGKqYTC1chbsD5h49Ev2i2dC4WxrQdjZHsI2wmV5XyUgzuMcpYCNGCVaeUqzWCVQ2ttXe8C4x6CYp2TjmBD3U4RXhNP0PCwHq3XtGxfvpOyY66DA1NLy5y4Gmen4R2E4iOnHvYmat1cFnfs-UdiFWA7OI"/>
+</div>
+<div>
+<h4 class="font-headline text-xl font-bold">アカリ</h4>
+<span class="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest">5歳</span>
+</div>
+</div>
+<div class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                        期待の星
+                    </div>
+</div>
+<div class="mb-6">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-bold text-on-surface-variant">私立中学校資金</span>
+<span class="font-headline text-2xl font-bold text-tertiary">¥412,000</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 45%;"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] font-bold text-on-surface-variant/40">目標額: ¥900,000</span>
+<span class="text-[10px] font-bold text-on-surface-variant/40">45%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Recent Activity -->
+<div class="lg:col-span-2">
+<h3 class="font-headline text-xl font-bold mb-6">最近の履歴</h3>
+<div class="space-y-3">
+<div class="bg-surface-container-lowest p-5 rounded-3xl flex items-center justify-between editorial-shadow">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-fixed/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<h5 class="font-bold text-sm">お小遣いの入金</h5>
+<p class="text-xs text-on-surface-variant/60">今日, 10:24 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-secondary text-sm">+ ¥15,000</p>
+<p class="text-[10px] text-on-surface-variant font-bold">ハルの口座</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-3xl flex items-center justify-between editorial-shadow">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">stars</span>
+</div>
+<div>
+<h5 class="font-bold text-sm">マイルストーン達成</h5>
+<p class="text-xs text-on-surface-variant/60">昨日</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-tertiary text-sm">バッジ獲得</p>
+<p class="text-[10px] text-on-surface-variant font-bold">アカリが40%を達成</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-3xl flex items-center justify-between editorial-shadow opacity-70">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">savings</span>
+</div>
+<div>
+<h5 class="font-bold text-sm">ボーナス振替</h5>
+<p class="text-xs text-on-surface-variant/60">2日前</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary text-sm">+ ¥50,000</p>
+<p class="text-[10px] text-on-surface-variant font-bold">家族基金</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Achievements -->
+<div>
+<h3 class="font-headline text-xl font-bold mb-6">バッジ・実績</h3>
+<div class="bg-surface-container-low rounded-[2rem] p-6 space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<p class="text-sm font-bold">継続の達人</p>
+<p class="text-[11px] text-on-surface-variant">6ヶ月連続で欠かさず入金しました。</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<p class="text-sm font-bold">賢いプランナー</p>
+<p class="text-[11px] text-on-surface-variant">子供たちのために3つの目標を設定しました。</p>
+</div>
+</div>
+<div class="flex items-start gap-4 opacity-40 grayscale">
+<div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<p class="text-sm font-bold">未来の富豪</p>
+<p class="text-[11px] text-on-surface-variant">家族の純資産500万円を目指しましょう。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-slate-950 shadow-[0_-4px_20px_rgba(23,51,85,0.08)] z-50 rounded-t-[2rem]">
+<a class="flex flex-col items-center justify-center bg-[#eff3ff] dark:bg-[#0060ad]/20 text-[#0060ad] dark:text-[#9ac3ff] rounded-2xl px-5 py-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold tracking-tight">ダッシュボード</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#173355]/40 dark:text-[#f8f9ff]/40 px-5 py-2 active:scale-90 transition-transform duration-150 hover:text-[#0060ad] dark:hover:text-[#9ac3ff]" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold tracking-tight">家族</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#173355]/40 dark:text-[#f8f9ff]/40 px-5 py-2 active:scale-90 transition-transform duration-150 hover:text-[#0060ad] dark:hover:text-[#9ac3ff]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold tracking-tight">設定</span>
+</a>
+</nav>
+</body></html>

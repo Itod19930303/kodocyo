@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>子供一覧 - こどちょ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#d4e3ff",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-dim": "#754a00",
+              "outline": "#627ca1",
+              "tertiary-container": "#feb246",
+              "secondary-container": "#b1fde6",
+              "on-secondary-fixed-variant": "#1f6e5d",
+              "error-container": "#f56965",
+              "on-error-container": "#65000b",
+              "inverse-on-surface": "#909eb4",
+              "surface": "#f8f9ff",
+              "on-background": "#173355",
+              "secondary": "#1a6b59",
+              "secondary-dim": "#025e4e",
+              "on-tertiary-fixed": "#3a2300",
+              "on-primary-fixed-variant": "#004681",
+              "on-surface-variant": "#466084",
+              "tertiary": "#855500",
+              "on-secondary-container": "#0e6453",
+              "inverse-primary": "#68abff",
+              "surface-dim": "#c5dbff",
+              "surface-variant": "#d4e3ff",
+              "surface-container-high": "#dde9ff",
+              "primary-container": "#9ac3ff",
+              "on-primary": "#f8f8ff",
+              "primary-fixed": "#9ac3ff",
+              "on-primary-fixed": "#00284e",
+              "on-tertiary-fixed-variant": "#623d00",
+              "surface-bright": "#f8f9ff",
+              "secondary-fixed-dim": "#a3eed8",
+              "surface-tint": "#0060ad",
+              "outline-variant": "#99b4dc",
+              "primary-dim": "#005498",
+              "secondary-fixed": "#b1fde6",
+              "error-dim": "#70030f",
+              "error": "#ac3434",
+              "on-secondary": "#e4fff5",
+              "tertiary-fixed": "#feb246",
+              "on-surface": "#173355",
+              "inverse-surface": "#020f1f",
+              "background": "#f8f9ff",
+              "surface-container": "#e6eeff",
+              "on-tertiary-container": "#563500",
+              "on-primary-container": "#003d71",
+              "on-secondary-fixed": "#005041",
+              "on-tertiary": "#fff7f3",
+              "on-error": "#fff7f6",
+              "primary": "#0060ad",
+              "primary-fixed-dim": "#7fb6ff",
+              "surface-container-low": "#eff3ff",
+              "tertiary-fixed-dim": "#eea439"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Manrope', 'Noto Sans JP', sans-serif;
+        background-color: #f8f9ff;
+        color: #173355;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface-container-low dark:bg-slate-900 border-b border-outline-variant/10 sticky top-0 z-40 transition-colors duration-300">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto font-['Plus_Jakarta_Sans'] leading-relaxed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="savings">savings</span>
+<div class="text-2xl font-bold text-[#0060ad] dark:text-[#9ac3ff] tracking-tight">こどちょ</div>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#173355] dark:text-slate-400 hover:text-[#0060ad] transition-colors duration-300" href="#">ダッシュボード</a>
+<a class="text-[#0060ad] dark:text-[#9ac3ff] font-bold border-b-2 border-[#0060ad] pb-1" href="#">家族</a>
+<a class="text-[#173355] dark:text-slate-400 hover:text-[#0060ad] transition-colors duration-300" href="#">設定</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center gap-2 px-4 py-2 text-[#173355] hover:bg-[#eff3ff] dark:hover:bg-slate-800 transition-colors duration-300 rounded-full text-sm font-semibold active:scale-95">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+                新規入力
+            </button>
+<button class="flex items-center gap-2 px-6 py-2.5 bg-primary text-on-primary rounded-full text-sm font-bold shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-lg">person_add</span>
+                子供を追加
+            </button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-12 md:py-20">
+<!-- Hero Section / Context -->
+<div class="mb-12">
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+            家族メンバー
+        </h1>
+<p class="font-body text-on-surface-variant max-w-2xl text-lg leading-relaxed">
+            お子様の貯蓄目標と進捗を管理しましょう。それぞれの夢に向かって、未来のための大切な貯蓄をひと目で確認できます。
+        </p>
+</div>
+<!-- Bento Grid / Child Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Child Card 1: Main Goal Highlight -->
+<div class="lg:col-span-2 group relative overflow-hidden rounded-[2.5rem] bg-primary p-8 text-on-primary shadow-xl transition-all hover:translate-y-[-2px]">
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="cheerful young Japanese boy smiling wearing a yellow hat in a soft sunlit garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf9dBJ8oNKbLOsMeLxa6BkAMfkxYJLP5Q_Oy1kgQH1e3hJo_qlRE2FrkoGvj83DzCsC1DpBrRh3OSYYXf0m8oL4LLyAUaQ_L0S6Dbz28xv7gnlSxGT0WWWckcPyhsf5uGZq-_aghi-IK1xDh-D517pnFto-9TQAvD2IW3qLX7COLmzhLCGaXsVucD8-tCD93pQ0QBR5vC_2sEFI3cx8KDYp6eAknIRUW_sJZXG-BJYcqusY7RcvWH_LFeG0Z3aRsNjqnl7B2RJSKw"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline text-2xl font-bold">Haruto</h3>
+<span class="px-2 py-0.5 bg-white/20 rounded-md text-[10px] font-bold uppercase tracking-wider">小学生</span>
+</div>
+<p class="text-sm opacity-80 font-body">中学入学準備金</p>
+</div>
+</div>
+<div class="space-y-1">
+<span class="text-sm font-semibold opacity-70 uppercase tracking-wider">貯蓄の進捗</span>
+<div class="text-5xl md:text-6xl font-headline font-bold tracking-tighter">
+                            ¥1,240,000
+                        </div>
+</div>
+</div>
+<div class="mt-12">
+<div class="flex justify-between items-end mb-3">
+<span class="text-sm font-bold">進捗率: 82%</span>
+<span class="text-xs opacity-70">目標: ¥1,500,000</span>
+</div>
+<div class="h-4 w-full bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed rounded-full" style="width: 82%"></div>
+</div>
+<div class="mt-4 flex gap-3">
+<button class="px-4 py-2 bg-white text-primary rounded-full text-xs font-bold hover:bg-opacity-90 transition-colors">今すぐ入金</button>
+<button class="px-4 py-2 border border-white/30 rounded-full text-xs font-bold hover:bg-white/10 transition-colors">詳細を見る</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Child Card 2 -->
+<div class="rounded-[2.5rem] bg-surface-container-lowest p-8 shadow-sm transition-all hover:shadow-md hover:translate-y-[-2px] flex flex-col justify-between border border-outline-variant/10">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-14 h-14 rounded-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a cute Japanese toddler girl laughing with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdxDf_9Ej04LSD4rFmErZlXFlXkCr4sl51a7IP044dfq9o4byd9nfcOZsB_FsV3OjtYoeyipudOP4-XNKZYtbLiXnciTnCJtlQdxlEruB9fnG4rkKPCT8Ay0NHL97NPYaBUL1KooDh7Wdm4HD55Ls7EoLOoY1Cqeb54vkK3pMFE_f_ua8uFOFs_fzUNz2QNPTInfDWCqIEbippAY4HCuIAk3aZv9KP3VO6xgh3SWac_exM4_-IiXpVTVzoPwl2YilK8r6R0GTk-ww"/>
+</div>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">順調に貯蓄中</span>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-headline text-xl font-bold">Akari</h3>
+<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant rounded-md text-[10px] font-bold">幼稚園・保育園</span>
+</div>
+<p class="text-sm text-on-surface-variant font-body mb-6">将来の教育資金</p>
+<div class="text-3xl font-headline font-bold text-primary mb-4">
+                    ¥458,200
+                </div>
+</div>
+<div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden mb-2">
+<div class="h-full bg-primary rounded-full" style="width: 30%"></div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant">
+<span>進捗 30%</span>
+<span>目標: ¥2.5M</span>
+</div>
+<div class="mt-6 flex flex-col gap-2">
+<button class="w-full py-2.5 bg-primary/10 text-primary rounded-xl text-xs font-bold hover:bg-primary/20 transition-colors">今すぐ入金</button>
+<button class="w-full py-2.5 text-on-surface-variant rounded-xl text-xs font-bold hover:bg-surface-container transition-colors">詳細を見る</button>
+</div>
+</div>
+</div>
+<!-- Child Card 3 -->
+<div class="rounded-[2.5rem] bg-surface-container-low p-8 transition-all hover:bg-surface-container-high/50 flex flex-col justify-between group">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-14 h-14 rounded-2xl overflow-hidden bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">child_care</span>
+</div>
+<span class="px-2 py-0.5 bg-primary/10 text-primary rounded-md text-[10px] font-bold">乳幼児</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-1">Ren</h3>
+<p class="text-sm text-on-surface-variant font-body mb-6">お稽古ごと・習い事</p>
+<div class="text-3xl font-headline font-bold text-on-surface mb-4">
+                    ¥82,000
+                </div>
+</div>
+<div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden mb-2">
+<div class="h-full bg-tertiary rounded-full" style="width: 54%"></div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant">
+<span>進捗 54%</span>
+<span>目標: ¥150K</span>
+</div>
+<div class="mt-6 flex flex-col gap-2">
+<button class="w-full py-2.5 bg-surface-container-highest text-on-surface rounded-xl text-xs font-bold hover:bg-surface-container-high transition-colors">詳細を見る</button>
+</div>
+</div>
+</div>
+<!-- Transaction Hint / Activity -->
+<div class="rounded-[2.5rem] bg-surface-container-lowest border border-outline-variant/20 p-8 flex flex-col justify-center items-center text-center">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4 text-secondary">
+<span class="material-symbols-outlined text-2xl">trending_up</span>
+</div>
+<h4 class="font-bold text-lg mb-1">家族全体の今月の貯蓄</h4>
+<div class="text-2xl font-headline font-extrabold text-secondary">+¥45,000</div>
+<p class="text-xs text-on-surface-variant mt-2">目標達成まであと少し！</p>
+<div class="mt-4 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-lg text-[10px] font-bold">マイルストーン達成！</div>
+</div>
+<!-- New Target Example -->
+<div class="rounded-[2.5rem] bg-surface-container-low p-8 flex flex-col justify-between border border-dashed border-outline-variant/30">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">flight_takeoff</span>
+</div>
+</div>
+<h3 class="font-headline text-lg font-bold mb-1">夏休み旅行資金</h3>
+<p class="text-xs text-on-surface-variant font-body">家族全員で北海道へ！</p>
+</div>
+<div class="mt-6">
+<button class="w-full py-3 bg-surface-container-highest text-primary rounded-xl text-xs font-bold hover:bg-primary/10 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                目標を設定する
+            </button>
+</div>
+</div>
+<!-- Add New Child Placeholder -->
+<button class="rounded-[2.5rem] border-2 border-dashed border-outline-variant/30 p-8 flex flex-col items-center justify-center group hover:bg-surface-container-low transition-all duration-300 min-h-[280px]">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-primary">
+<span class="material-symbols-outlined text-3xl">add</span>
+</div>
+<span class="font-bold text-on-surface-variant">子供を追加</span>
+<span class="text-xs text-on-surface-variant/60 mt-1">新しい目標を始めましょう</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-outline-variant/10 font-['Plus_Jakarta_Sans'] text-[11px] font-medium">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 px-5 py-2 hover:text-primary" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+        ホーム
+    </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 px-5 py-2 hover:text-primary" href="#">
+<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
+        貯金箱
+    </a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-2xl px-5 py-2" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1">family_restroom</span>
+        家族
+    </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 px-5 py-2 hover:text-primary" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+        プロフィール
+    </a>
+</nav>
+<!-- Floating Action Button for Mobile -->
+<button class="md:hidden fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-xl active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined">add</span>
+</button>
+</body></html>

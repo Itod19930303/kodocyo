@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#d4e3ff",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-dim": "#754a00",
+              "outline": "#627ca1",
+              "tertiary-container": "#feb246",
+              "secondary-container": "#b1fde6",
+              "on-secondary-fixed-variant": "#1f6e5d",
+              "error-container": "#f56965",
+              "on-error-container": "#65000b",
+              "inverse-on-surface": "#909eb4",
+              "surface": "#f8f9ff",
+              "on-background": "#173355",
+              "secondary": "#1a6b59",
+              "secondary-dim": "#025e4e",
+              "on-tertiary-fixed": "#3a2300",
+              "on-primary-fixed-variant": "#004681",
+              "on-surface-variant": "#466084",
+              "tertiary": "#855500",
+              "on-secondary-container": "#0e6453",
+              "inverse-primary": "#68abff",
+              "surface-dim": "#c5dbff",
+              "surface-variant": "#d4e3ff",
+              "surface-container-high": "#dde9ff",
+              "primary-container": "#9ac3ff",
+              "on-primary": "#f8f8ff",
+              "primary-fixed": "#9ac3ff",
+              "on-primary-fixed": "#00284e",
+              "on-tertiary-fixed-variant": "#623d00",
+              "surface-bright": "#f8f9ff",
+              "secondary-fixed-dim": "#a3eed8",
+              "surface-tint": "#0060ad",
+              "outline-variant": "#99b4dc",
+              "primary-dim": "#005498",
+              "secondary-fixed": "#b1fde6",
+              "error-dim": "#70030f",
+              "error": "#ac3434",
+              "on-secondary": "#e4fff5",
+              "tertiary-fixed": "#feb246",
+              "on-surface": "#173355",
+              "inverse-surface": "#020f1f",
+              "background": "#f8f9ff",
+              "surface-container": "#e6eeff",
+              "on-tertiary-container": "#563500",
+              "on-primary-container": "#003d71",
+              "on-secondary-fixed": "#005041",
+              "on-tertiary": "#fff7f3",
+              "on-error": "#fff7f6",
+              "primary": "#0060ad",
+              "primary-fixed-dim": "#7fb6ff",
+              "surface-container-low": "#eff3ff",
+              "tertiary-fixed-dim": "#eea439"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- Header Suppression: TopAppBar is suppressed for Login/Linear flow per UX Goal -->
+<main class="flex-grow flex items-center justify-center px-6 py-12 md:py-24 relative overflow-hidden">
+<!-- Cleaned Background: Removed abstract elements and textures -->
+<div class="w-full max-w-5xl grid md:grid-cols-2 bg-surface-container-lowest rounded-[2.5rem] shadow-xl shadow-on-surface/5 overflow-hidden border border-outline-variant/10">
+<!-- Left Side: Editorial Content -->
+<div class="hidden md:flex flex-col justify-between p-12 bg-surface-container-highest relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-12">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="savings">savings</span>
+<div class="text-2xl font-bold text-[#0060ad] dark:text-[#9ac3ff] tracking-tight font-['Plus_Jakarta_Sans']">こどちょ</div>
+</div>
+<h1 class="text-on-surface text-5xl font-headline font-bold leading-[1.15] mb-6">
+                    家族の未来を、<br/>穏やかに育む。
+                </h1>
+<p class="text-on-surface-variant text-lg font-body max-w-sm leading-relaxed">
+                    「信頼」という名の貯蓄体験。日本の家庭に寄り添う、新しくて温かい資産形成のカタチ。
+                </p>
+</div>
+<div class="relative z-10 flex items-center gap-4 bg-surface-container-lowest/50 backdrop-blur-sm p-6 rounded-2xl border border-outline-variant/20">
+<div class="h-12 w-12 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant/10">
+<img class="w-full h-full object-cover" data-alt="portrait of a smiling middle-aged woman in a minimalist bright home setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCWF1kFNHkhoZcuI8GM0GCfyqFpXHPpkZEmknqDJLBOkbF1k3vwvkCML0RKbMMp_cTovodtC8ic7MuAXi7oV6R_QFNtRj1rFSpMf5oqpwTW2ntcnhWpZk8ICDvxdQHwQ_jMNRHPzQ_kykw9Dy83k3Zrafke6jyTjE3maBv3XPso0pL8sWIR5S_j3VFShHvZTT2-qHuBef-SnFohKKcLWa8nS2wbBC6rB03Atlffoy674R7R1yhrCM6P7nFLO_GeAvXJichIXElMdw"/>
+</div>
+<div>
+<p class="text-on-surface text-sm font-medium">「子供の将来のために、無理なく続けられています。アプリを開くたびに安心します。」</p>
+<p class="text-on-surface-variant text-xs mt-1">— 佐藤様 (東京都)</p>
+</div>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="p-8 md:p-16 flex flex-col justify-center">
+<div class="mb-10 text-center md:text-left">
+<h2 class="text-on-surface text-3xl font-headline font-bold mb-2">おかえりなさい</h2>
+<p class="text-on-surface-variant font-body">アカウントにログインしてください</p>
+</div>
+<form class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="text-on-surface-variant text-sm font-semibold ml-1" for="email">メールアドレス</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="mail">mail</span>
+</div>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all duration-300" id="email" name="email" placeholder="example@kodocho.jp" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center ml-1">
+<label class="text-on-surface-variant text-sm font-semibold" for="password">パスワード</label>
+<a class="text-primary text-xs font-bold hover:underline transition-all" href="#">パスワードをお忘れですか？</a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="lock">lock</span>
+</div>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-12 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all duration-300" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute inset-y-0 right-4 flex items-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Login Button -->
+<button class="w-full bg-primary text-on-primary font-headline font-bold py-5 rounded-full hover:bg-primary-dim active:scale-[0.98] transition-all duration-200 shadow-lg shadow-primary/20 mt-4 flex items-center justify-center gap-2 group" type="submit">
+                    ログインする
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Divider -->
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="flex-shrink mx-4 text-on-surface-variant/50 text-xs font-medium">または以下の方法でログイン</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors duration-200 font-body text-sm text-on-surface-variant" type="button">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrs1u4sXYZUv499cAd4lBAX14f9iX4mToUwerE0cgXURguZbEJVPqRORaKzmXV2-9AITkqgjsgKKVfvUXsrcSs_5kNCThwq_TLtOsfjtuWskqzVsLnc_kyIWAQEeUIVxSruvUXvy8jpG-8WmjOSx4hH_ymJDiqbA8EVTqg09dTFywruuJbb2Zrdkbkt-RtLxMTaTbdIiI4ZXTNgNv1TulfnS8v-CRbis3DLGbrC6GYusjkyiogfgELYzVIT8Y0lxZuNUeBrbg0t2c"/>
+                        Google
+                    </button>
+<button class="flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors duration-200 font-body text-sm text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-xl text-[#000000]" data-icon="fingerprint">fingerprint</span>
+                        パスキー
+                    </button>
+</div>
+</form>
+<div class="mt-12 text-center">
+<p class="text-on-surface-variant text-sm font-body">
+                    まだアカウントをお持ちではありませんか？ 
+                    <a class="text-primary font-bold hover:underline ml-1" href="#">新規登録</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Meta -->
+<footer class="p-8 text-center">
+<div class="flex flex-wrap justify-center gap-6 mb-4 text-xs font-medium text-on-surface-variant/60">
+<a class="hover:text-primary transition-colors" href="#">利用規約</a>
+<a class="hover:text-primary transition-colors" href="#">プライバシーポリシー</a>
+<a class="hover:text-primary transition-colors" href="#">お問い合わせ</a>
+</div>
+<p class="text-[10px] text-on-surface-variant/40 font-body uppercase tracking-widest">© 2024 こどちょ. ALL RIGHTS RESERVED.</p>
+</footer>
+<!-- BottomNavBar Suppression: Suppressed for Login screen per "Destination Rule" -->
+</body></html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>こどちょ - 子どもの貯蓄詳細</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#d4e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-dim": "#754a00",
+                        "outline": "#627ca1",
+                        "tertiary-container": "#feb246",
+                        "secondary-container": "#b1fde6",
+                        "on-secondary-fixed-variant": "#1f6e5d",
+                        "error-container": "#f56965",
+                        "on-error-container": "#65000b",
+                        "inverse-on-surface": "#909eb4",
+                        "surface": "#f8f9ff",
+                        "on-background": "#173355",
+                        "secondary": "#1a6b59",
+                        "secondary-dim": "#025e4e",
+                        "on-tertiary-fixed": "#3a2300",
+                        "on-primary-fixed-variant": "#004681",
+                        "on-surface-variant": "#466084",
+                        "tertiary": "#855500",
+                        "on-secondary-container": "#0e6453",
+                        "inverse-primary": "#68abff",
+                        "surface-dim": "#c5dbff",
+                        "surface-variant": "#d4e3ff",
+                        "surface-container-high": "#dde9ff",
+                        "primary-container": "#9ac3ff",
+                        "on-primary": "#f8f8ff",
+                        "primary-fixed": "#9ac3ff",
+                        "on-primary-fixed": "#00284e",
+                        "on-tertiary-fixed-variant": "#623d00",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed-dim": "#a3eed8",
+                        "surface-tint": "#0060ad",
+                        "outline-variant": "#99b4dc",
+                        "primary-dim": "#005498",
+                        "secondary-fixed": "#b1fde6",
+                        "error-dim": "#70030f",
+                        "error": "#ac3434",
+                        "on-secondary": "#e4fff5",
+                        "tertiary-fixed": "#feb246",
+                        "on-surface": "#173355",
+                        "inverse-surface": "#020f1f",
+                        "background": "#f8f9ff",
+                        "surface-container": "#e6eeff",
+                        "on-tertiary-container": "#563500",
+                        "on-primary-container": "#003d71",
+                        "on-secondary-fixed": "#005041",
+                        "on-tertiary": "#fff7f3",
+                        "on-error": "#fff7f6",
+                        "primary": "#0060ad",
+                        "primary-fixed-dim": "#7fb6ff",
+                        "surface-container-low": "#eff3ff",
+                        "tertiary-fixed-dim": "#eea439"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans", "Noto Sans JP"],
+                        "body": ["Manrope", "Noto Sans JP"],
+                        "label": ["Manrope", "Noto Sans JP"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Manrope', 'Noto Sans JP', sans-serif;
+            background-color: #f8f9ff;
+            color: #173355;
+        }
+        .editorial-shadow {
+            box-shadow: 0 10px 30px -10px rgba(23, 51, 85, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface-container-low sticky top-0 z-40 border-b border-surface-container">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="savings">savings</span>
+<div class="text-2xl font-bold text-[#0060ad] dark:text-[#9ac3ff] tracking-tight">こどちょ</div>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-[#173355] hover:text-[#0060ad] font-medium transition-colors duration-300" href="#">ダッシュボード</a>
+<a class="text-[#0060ad] font-bold border-b-2 border-[#0060ad] pb-1" href="#">ファミリー</a>
+<a class="text-[#173355] hover:text-[#0060ad] font-medium transition-colors duration-300" href="#">設定</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold text-sm transition-transform active:scale-95 duration-150">お子様を追加</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-8 pb-32">
+<!-- Breadcrumb & Title -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex items-center gap-2 text-on-surface-variant text-sm mb-2 font-label">
+<span class="material-symbols-outlined text-sm">home</span>
+<span>ファミリー</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary font-bold">はるとの貯蓄</span>
+</nav>
+<h1 class="text-4xl font-extrabold font-headline tracking-tight text-on-background">はるとの貯金状況</h1>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low p-2 rounded-full px-6">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden">
+<img alt="はるとのプロフィール写真" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZbZetlxyBTItdQ7BjTs4ElFqfmFNNSSd1HxZr92LUVqBOp7FUHcNWPZXcqEDWHde54OwBFyUpmv3vhnbLQXjF0sBoNlkv19hIVrY6UhtgHVAIEhuwJPYk8dPp6iVzhcDyZq-jA1ehADfVQdqb2puvAEM5agqCgqeMhFmVWdj33A7CTmSWvk_O9cWMpByjsiIibznfovVAYOXZ-xU8iS7fjLw5IYf-EFwjzoA8nCH3fpmPtCNmAcGec7WmXsHKU0BjCZrEnX_fE68"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant font-label">最終更新</span>
+<span class="text-sm font-bold">2024年5月22日</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Summary Cards Section -->
+<div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Current Balance -->
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 editorial-shadow flex flex-col justify-between min-h-[220px]">
+<div>
+<p class="text-on-surface-variant font-label mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+                        現在の残高
+                    </p>
+<h2 class="text-5xl font-extrabold font-headline tracking-tighter text-on-background">¥428,500</h2>
+</div>
+<div class="flex items-center gap-2 mt-4">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                        +12.5%
+                    </span>
+<span class="text-xs text-on-surface-variant">先月比</span>
+</div>
+</div>
+<!-- Goal Progress Card -->
+<div class="bg-primary rounded-[2rem] p-8 text-on-primary editorial-shadow flex flex-col justify-between min-h-[220px]">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-primary-container font-label mb-1">大学教育資金</p>
+<h3 class="text-2xl font-bold font-headline">目標達成率</h3>
+</div>
+<div class="relative w-20 h-20 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-primary-dim" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-secondary-fixed" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="64.1" stroke-width="6"></circle>
+</svg>
+<span class="absolute text-sm font-bold">70%</span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-primary-container text-xs">残り</span>
+<span class="text-xl font-bold">¥171,500</span>
+</div>
+<span class="text-xs bg-black/10 px-3 py-1 rounded-full">目標: ¥600,000</span>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="sm:col-span-2 bg-surface-container-lowest rounded-[2rem] p-8 editorial-shadow min-h-[350px]">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-bold font-headline">貯蓄の推移</h3>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-full text-xs font-bold bg-surface-container-low text-on-surface-variant">6ヶ月</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-bold bg-primary text-on-primary">1年</button>
+</div>
+</div>
+<div class="relative h-48 w-full mt-10">
+<div class="absolute left-0 h-full flex flex-col justify-between text-[10px] text-on-surface-variant opacity-50 font-label">
+<span>50万</span>
+<span>25万</span>
+<span>0</span>
+</div>
+<svg class="w-full h-full px-10" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,35 Q10,32 20,30 T40,22 T60,18 T80,10 T100,5" fill="none" stroke="#0060ad" stroke-width="2"></path>
+<circle cx="0" cy="35" fill="#0060ad" r="1"></circle>
+<circle cx="20" cy="30" fill="#0060ad" r="1"></circle>
+<circle cx="40" cy="22" fill="#0060ad" r="1"></circle>
+<circle cx="60" cy="18" fill="#0060ad" r="1"></circle>
+<circle cx="80" cy="10" fill="#0060ad" r="1"></circle>
+<circle cx="100" cy="5" fill="#0060ad" r="1.5"></circle>
+<path d="M0,35 Q10,32 20,30 T40,22 T60,18 T80,10 T100,5 L100,40 L0,40 Z" fill="url(#chartGradient)" opacity="0.1"></path>
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0060ad"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-between mt-4 px-10 text-[10px] text-on-surface-variant font-label">
+<span>12月</span>
+<span>1月</span>
+<span>2月</span>
+<span>3月</span>
+<span>4月</span>
+<span>5月</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Transaction History / Side Panel -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- Transaction History -->
+<div class="bg-surface-container-low rounded-[2rem] p-8 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold font-headline">直近の入金履歴</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">tune</span>
+</div>
+<div class="space-y-4">
+<!-- Transaction Item 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex items-center justify-between transition-transform hover:scale-[1.02] duration-300">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">add_circle</span>
+</div>
+<div>
+<p class="text-sm font-bold">お年玉</p>
+<p class="text-[10px] text-on-surface-variant font-label">2024年1月5日</p>
+</div>
+</div>
+<p class="text-secondary font-bold">+¥10,000</p>
+</div>
+<!-- Transaction Item 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex items-center justify-between transition-transform hover:scale-[1.02] duration-300">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">savings</span>
+</div>
+<div>
+<p class="text-sm font-bold">定期積立</p>
+<p class="text-[10px] text-on-surface-variant font-label">2024年5月1日</p>
+</div>
+</div>
+<p class="text-on-background font-bold">+¥5,000</p>
+</div>
+<!-- Transaction Item 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex items-center justify-between transition-transform hover:scale-[1.02] duration-300">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container">rewarded_ads</span>
+</div>
+<div>
+<p class="text-sm font-bold">お手伝いボーナス</p>
+<p class="text-[10px] text-on-surface-variant font-label">2024年5月15日</p>
+</div>
+</div>
+<p class="text-tertiary font-bold">+¥500</p>
+</div>
+</div>
+<button class="mt-8 w-full py-4 text-primary font-bold text-sm bg-white rounded-2xl border-2 border-transparent hover:border-primary-container transition-all">
+                    すべての履歴を見る
+                </button>
+</div>
+<!-- Quick Actions Panel -->
+<div class="bg-surface-container-low rounded-[2rem] p-8">
+<h3 class="text-xl font-bold font-headline mb-6">クイック操作</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface-container-lowest rounded-2xl hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary">add_circle</span>
+<span class="text-xs font-bold">貯金する</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface-container-lowest rounded-2xl hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary">remove_circle</span>
+<span class="text-xs font-bold">引き出す</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface-container-lowest rounded-2xl hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary">notifications</span>
+<span class="text-xs font-bold">リマインダー</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface-container-lowest rounded-2xl hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary">share</span>
+<span class="text-xs font-bold">共有する</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Achievement Section -->
+<div class="mt-12 bg-tertiary-fixed rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center justify-between">
+<div class="text-center md:text-left mb-6 md:mb-0">
+<h3 class="text-3xl font-extrabold font-headline text-on-tertiary-fixed mb-2 tracking-tight">目標まであと少し！</h3>
+<p class="text-on-tertiary-fixed-variant max-w-md">現在のペースで貯蓄を続けると、あと14ヶ月で教育資金の目標を達成できます。家族全員で応援しましょう。</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-on-tertiary-fixed text-white px-8 py-4 rounded-full font-bold shadow-xl transition-transform active:scale-95">応援メッセージを送る</button>
+<button class="bg-white/40 text-on-tertiary-fixed px-6 py-4 rounded-full font-bold transition-colors hover:bg-white/60">詳細設定</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 backdrop-blur-xl shadow-2xl rounded-t-[2rem] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#173355]/60 px-5 py-2 hover:text-[#0060ad] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium mt-1">ホーム</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#173355]/60 px-5 py-2 hover:text-[#0060ad] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium mt-1">金庫</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#eff3ff] text-[#0060ad] rounded-2xl px-5 py-2 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="family_restroom">family_restroom</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium mt-1">ファミリー</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#173355]/60 px-5 py-2 hover:text-[#0060ad] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium mt-1">プロフィール</span>
+</a>
+</nav>
+<!-- Contextual FAB -->
+<button class="fixed right-8 bottom-28 md:bottom-8 bg-primary text-on-primary p-4 rounded-full editorial-shadow transition-transform active:scale-90 z-40 hidden md:flex items-center gap-2 px-6">
+<span class="material-symbols-outlined">add</span>
+<span class="font-bold">入金する</span>
+</button>
+</body></html>
