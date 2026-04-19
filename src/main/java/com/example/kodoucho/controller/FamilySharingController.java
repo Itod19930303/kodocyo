@@ -51,7 +51,7 @@ public class FamilySharingController {
         }
         try {
             var user = loginUser.get(auth);
-            familySharingService.accept(token, user.getId());
+            familySharingService.accept(token, user.getId(), user.getEmail());
             model.addAttribute("message", "招待を承諾しました");
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());

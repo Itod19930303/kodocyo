@@ -43,7 +43,12 @@ public class TransactionService {
     }
 
     @Transactional
-    public void delete(Long txId) {
+    public void delete(Long txId, Long childId) {
+        Transaction tx = transactionRepository.findById(txId)
+                .orElseThrow(() -> new IllegalArgumentException("取引が見つかりません"));
+        if (!tx.getChildId().equals(childId)) {
+            throw new IllegalArgumentException("アクセス権限がありません");
+        }
         transactionRepository.deleteById(txId);
     }
 

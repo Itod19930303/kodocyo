@@ -31,11 +31,16 @@ public class TransactionController {
                          @RequestParam(required = false) Integer yearMonth,
                          Model model, Authentication auth) {
         var user = loginUser.get(auth);
-        Child child = childService.findById(id);
-
-        // アクセス権チェック
-        if ("CHILD".equals(user.getRole()) && !id.equals(child.getChildUserId())) {
-            return "redirect:/family";
+        Child child;
+        if ("CHILD".equals(user.getRole())) {
+            child = childService.findById(id);
+            if (!id.equals(child.getChildUserId())) {
+                return "redirect:/family";
+            }
+        } else if ("PARENT".equals(user.getRole())) {
+            child = childService.findByIdAndParent(id, user.getId());
+        } else {
+            child = childService.findById(id);
         }
 
         int balance = childService.calcBalance(id);
@@ -75,7 +80,9 @@ public class TransactionController {
                           @RequestParam(defaultValue = "income") String type,
                           Model model, Authentication auth) {
         var user = loginUser.get(auth);
-        Child child = childService.findById(id);
+        Child child = "PARENT".equals(user.getRole())
+                ? childService.findByIdAndParent(id, user.getId())
+                : childService.findById(id);
         TransactionForm form = new TransactionForm();
         form.setType(type);
         form.setTransactionDate(LocalDate.now());
@@ -94,7 +101,9 @@ public class TransactionController {
                          @Valid @ModelAttribute TransactionForm transactionForm,
                          BindingResult result, Model model, Authentication auth) {
         var user = loginUser.get(auth);
-        Child child = childService.findById(id);
+        Child child = "PARENT".equals(user.getRole())
+                ? childService.findByIdAndParent(id, user.getId())
+                : childService.findById(id);
         if (result.hasErrors()) {
             model.addAttribute("child", child);
             model.addAttribute("goals", goalService.findByChild(id));
@@ -107,15 +116,24 @@ public class TransactionController {
     }
 
     @PostMapping("/children/{childId}/transactions/{txId}/delete")
-    public String delete(@PathVariable Long childId, @PathVariable Long txId) {
-        transactionService.delete(txId);
+    public String delete(@PathVariable Long childId, @PathVariable Long txId, Authentication auth) {
+        var user = loginUser.get(auth);
+        if ("PARENT".equals(user.getRole())) {
+            childService.findByIdAndParent(childId, user.getId());
+        }
+        transactionService.delete(txId, childId);
         return "redirect:/children/" + childId;
     }
 
     @GetMapping("/children/{id}/chart-data")
     @ResponseBody
     public ResponseEntity<ChartDataDto> chartData(@PathVariable Long id,
-                                                   @RequestParam(defaultValue = "6months") String period) {
+                                                   @RequestParam(defaultValue = "6months") String period,
+                                                   Authentication auth) {
+        var user = loginUser.get(auth);
+        if ("PARENT".equals(user.getRole())) {
+            childService.findByIdAndParent(id, user.getId());
+        }
         return ResponseEntity.ok(transactionService.getLineChartData(id, period));
     }
 }

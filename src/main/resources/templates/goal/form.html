@@ -1,47 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title th:text="(${goal} != null ? '目標を編集' : '目標を追加') + ' - こどちょ'">こどちょ</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Manrope:wght@400;500;600&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#0060ad', 'primary-dim': '#005498',
-            'on-primary': '#f8f8ff', surface: '#f8f9ff',
-            'surface-container-low': '#eff3ff',
-            'surface-container-lowest': '#ffffff',
-            'surface-container-highest': '#d4e3ff',
-            'on-surface': '#173355',
-            'secondary-container': '#b1fde6',
-            'tertiary-container': '#feb246',
-            error: '#ac3434',
-          },
-          fontFamily: {
-            sans: ['Manrope', 'Noto Sans JP', 'sans-serif'],
-            display: ['Plus Jakarta Sans', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    .material-symbols-rounded { font-family: 'Material Symbols Rounded'; font-style: normal; font-size: 20px; line-height: 1; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-smoothing: antialiased; }
-    body { padding-bottom: 72px; background-color: #f8f9ff; color: #173355; }
-    @media (min-width: 768px) { body { padding-bottom: 0; } }
-    .card-shadow { box-shadow: 0 2px 16px rgba(0,96,173,0.08); }
-    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.15s; background: #eff3ff; color: #173355; }
-    .chip.selected { background: #0060ad; color: #f8f8ff; }
-    .emoji-btn { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; background: #eff3ff; transition: all 0.15s; }
-    .emoji-btn.selected { background: #d4e3ff; outline: 2px solid #0060ad; }
-  </style>
-</head>
-<body class="font-sans">
+<head th:replace="~{layout/head :: head(${goal} != null ? '目標を編集' : '目標を追加')}"></head>
+<body class="app-page font-sans">
 
 <div th:replace="~{layout/nav :: navbar('family', ${user})}"></div>
 
@@ -100,7 +60,7 @@
           <button type="button" th:each="p : ${ {'教育','習い事','趣味','お祝い'} }"
                   th:classappend="${goalForm.purposeCategory == p} ? 'selected' : ''"
                   class="chip" th:text="${p}"
-                  th:onclick="'selectPurpose(this, \'' + ${p} + '\')'"></button>
+                  th:onclick="'selectToggleChip(this, \'purposeChips\', \'purposeInput\', \'' + ${p} + '\')'" ></button>
         </div>
         <input type="hidden" th:field="*{purposeCategory}" id="purposeInput">
       </div>
@@ -177,7 +137,7 @@
           <button type="button" th:each="p : ${ {'教育','習い事','趣味','お祝い'} }"
                   th:classappend="${goalForm.purposeCategory == p} ? 'selected' : ''"
                   class="chip" th:text="${p}"
-                  th:onclick="'selectPurposeEdit(this, \'' + ${p} + '\')'"></button>
+                  th:onclick="'selectToggleChip(this, \'purposeChipsEdit\', \'purposeInputEdit\', \'' + ${p} + '\')'" ></button>
         </div>
         <input type="hidden" th:field="*{purposeCategory}" id="purposeInputEdit">
       </div>
@@ -235,36 +195,5 @@
   </div>
 </main>
 
-<script>
-  function selectEmoji(btn, emoji) {
-    document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    document.getElementById('emojiInput').value = emoji;
-  }
-  function selectPurpose(btn, purpose) {
-    const allBtns = document.querySelectorAll('#purposeChips .chip');
-    const input = document.getElementById('purposeInput');
-    if (btn.classList.contains('selected')) {
-      btn.classList.remove('selected');
-      input.value = '';
-    } else {
-      allBtns.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      input.value = purpose;
-    }
-  }
-  function selectPurposeEdit(btn, purpose) {
-    const allBtns = document.querySelectorAll('#purposeChipsEdit .chip');
-    const input = document.getElementById('purposeInputEdit');
-    if (btn.classList.contains('selected')) {
-      btn.classList.remove('selected');
-      input.value = '';
-    } else {
-      allBtns.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      input.value = purpose;
-    }
-  }
-</script>
 </body>
 </html>

@@ -35,9 +35,12 @@ public class FamilySharingService {
     }
 
     @Transactional
-    public void accept(String token, Long userId) {
+    public void accept(String token, Long userId, String userEmail) {
         FamilyShare share = familyShareRepository.findByInviteToken(token)
                 .orElseThrow(() -> new IllegalArgumentException("招待URLが無効です"));
+        if (!share.getInvitedEmail().equalsIgnoreCase(userEmail)) {
+            throw new IllegalArgumentException("この招待はあなた宛ではありません");
+        }
         share.setSharedUserId(userId);
         share.setStatus("ACCEPTED");
         share.setInviteToken(null);

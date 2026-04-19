@@ -4,8 +4,108 @@
 .material-symbols-rounded {
   font-family: 'Material Symbols Rounded';
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-style: normal;
+  font-size: 20px;
   line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
   vertical-align: middle;
+}
+
+/* アプリページ共通ボディスタイル */
+body.app-page {
+  padding-bottom: 72px;
+  background-color: #f8f9ff;
+  color: #173355;
+}
+
+@media (min-width: 768px) {
+  body.app-page {
+    padding-bottom: 0;
+  }
+}
+
+/* カードシャドウ */
+.card-shadow {
+  box-shadow: 0 2px 16px rgba(0, 96, 173, 0.08);
+}
+
+/* ダッシュボードヒーローカード */
+.hero-card {
+  background: linear-gradient(135deg, #0060ad 0%, #005498 60%, #003d7a 100%);
+}
+
+/* チップ共通（family/sharing, goal/form） */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: none;
+  background: #eff3ff;
+  color: #173355;
+}
+.chip.selected {
+  background: #0060ad;
+  color: #f8f8ff;
+}
+
+/* カテゴリチップ（transaction/form） */
+.category-chip.selected {
+  background-color: #0060ad;
+  color: #f8f8ff;
+}
+
+/* タブ（transaction/form） */
+.type-tab {
+  background-color: #eff3ff;
+  color: #173355;
+}
+.type-tab.active {
+  background-color: #0060ad;
+  color: #f8f8ff;
+}
+
+/* 数値入力スピンボタン非表示（transaction/form） */
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* アバター・カラー選択ボタン（child/form） */
+.avatar-btn.selected {
+  outline: 2.5px solid #0060ad;
+  outline-offset: 2px;
+}
+.color-btn.selected {
+  outline: 3px solid #0060ad;
+  outline-offset: 2px;
+}
+
+/* 絵文字ボタン（goal/form） */
+.emoji-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  background: #eff3ff;
+  transition: all 0.15s;
+}
+.emoji-btn.selected {
+  background: #d4e3ff;
+  outline: 2px solid #0060ad;
 }
 
 /* スクロールバー */
