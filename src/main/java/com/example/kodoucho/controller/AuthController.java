@@ -1,7 +1,10 @@
 package com.example.kodoucho.controller;
 
 import com.example.kodoucho.dto.RegisterForm;
+import com.example.kodoucho.entity.User;
+import com.example.kodoucho.service.EmailVerificationService;
 import com.example.kodoucho.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final UserService userService;
+    private final EmailVerificationService emailVerificationService;
 
     @GetMapping("/login")
     public String showLogin() {
@@ -27,16 +31,19 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid @ModelAttribute RegisterForm form, BindingResult result, Model model) {
+    public String register(@Valid @ModelAttribute RegisterForm form, BindingResult result,
+                           Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             return "auth/register";
         }
         try {
-            userService.register(form);
+            User user = userService.register(form);
+            String sentTo = emailVerificationService.sendVerificationEmail(user);
+            request.getSession(true).setAttribute("TWO_FA_EMAIL_SENT_TO", sentTo);
+            return "redirect:/auth/email-sent";
         } catch (IllegalArgumentException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "auth/register";
         }
-        return "redirect:/login?registered";
     }
 }
