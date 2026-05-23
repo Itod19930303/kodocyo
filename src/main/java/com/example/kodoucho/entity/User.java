@@ -33,6 +33,8 @@ public class User {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
+    private LocalDateTime lastVerifiedAt;
+
     @PrePersist
     void prePersist() {
         createdAt = updatedAt = LocalDateTime.now();

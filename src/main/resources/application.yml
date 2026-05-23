@@ -26,6 +26,28 @@ spring:
               - profile
   thymeleaf:
     cache: false
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+app:
+  email-verification:
+    # テスト時の送付先上書き。空文字にするとユーザーの実際のメールアドレスに送付
+    override-to: ${EMAIL_VERIFICATION_OVERRIDE_TO:test@example.com}
+    # 再認証が必要になるまでの日数
+    required-days: ${EMAIL_VERIFICATION_REQUIRED_DAYS:7}
+    # 認証メールのリンクベースURL
+    base-url: ${APP_BASE_URL:http://localhost:8080}
+    # トークン有効期限（時間）
+    token-expiry-hours: 24
 
 server:
   port: 8080
